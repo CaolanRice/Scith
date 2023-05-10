@@ -460,24 +460,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Martin\\.nuget\\packages\\": {}
+    "C:\\Users\\Caolan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Martin\\Desktop\\Caolan_Projects\\Scith\\Scith.csproj",
+      "projectUniqueName": "C:\\Users\\Caolan\\Desktop\\Projects\\C#\\Scith\\Scith.csproj",
       "projectName": "Scith",
-      "projectPath": "C:\\Users\\Martin\\Desktop\\Caolan_Projects\\Scith\\Scith.csproj",
-      "packagesPath": "C:\\Users\\Martin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Martin\\Desktop\\Caolan_Projects\\Scith\\obj\\",
+      "projectPath": "C:\\Users\\Caolan\\Desktop\\Projects\\C#\\Scith\\Scith.csproj",
+      "packagesPath": "C:\\Users\\Caolan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Caolan\\Desktop\\Projects\\C#\\Scith\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Martin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Caolan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
