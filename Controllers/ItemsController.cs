@@ -8,13 +8,18 @@ namespace Scith.Controllers
 {
     [ApiController]
     [Route("items")]
+    //implements
     public class ItemsController : ControllerBase
     {
-        private readonly InMemItemsRepository repository;
+        private readonly InterfaceItemsRepository repository;
+        private readonly ILogger<ItemsController> logger;
 
-        public ItemsController()
+        public ItemsController(InterfaceItemsRepository repository, ILogger<ItemsController> logger)
         {
-            repository = new InMemItemsRepository();
+            //new instance, generates new GUID
+            this.repository = repository;
+            this.logger = logger;
+            logger.LogInformation("ItemsController created");
         }
 
         [HttpGet]
@@ -24,11 +29,13 @@ namespace Scith.Controllers
             return items;
         }
 
-        [HttpGet("/{id}")]
-        //actionresult allows for returning multiple types 
+        [HttpGet("{id}")]
+        //actionresult allows for returning multiple types so we can return NotFound result
         public ActionResult<Item> GetItem(Guid id)
         {
+            logger.LogInformation("Received request for item with ID {Id}", id);
             var item = repository.GetItem(id);
+            logger.LogInformation("Retrieved item with ID {Id}: {@Item}", id, item);
             if (item is null)
             {
                 return NotFound();

@@ -1,3 +1,5 @@
+using Scith.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +8,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//only create one over the lifetime of the service
+builder.Services.AddSingleton<InterfaceItemsRepository, ItemsRepository>();
 
 var app = builder.Build();
 
