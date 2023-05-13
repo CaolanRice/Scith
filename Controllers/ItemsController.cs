@@ -1,6 +1,6 @@
 
 using Microsoft.AspNetCore.Mvc;
-using Scith.Repositories;
+using Scith.DTOs;
 using Scith.Entities;
 
 namespace Scith.Controllers
@@ -12,35 +12,30 @@ namespace Scith.Controllers
     public class ItemsController : ControllerBase
     {
         private readonly InterfaceItemsRepository repository;
-        private readonly ILogger<ItemsController> logger;
 
-        public ItemsController(InterfaceItemsRepository repository, ILogger<ItemsController> logger)
+        public ItemsController(InterfaceItemsRepository repository)
         {
-            //new instance, generates new GUID
             this.repository = repository;
-            this.logger = logger;
-            logger.LogInformation("ItemsController created");
         }
 
         [HttpGet]
-        public IEnumerable<Item> GetItems()
+        public IEnumerable<ItemDTO> GetItems()
         {
-            var items = repository.GetItems();
+            //convert each item in repository to a DTO
+            var items = repository.GetItems().Select(item => item.AsDTO());
             return items;
         }
 
         [HttpGet("{id}")]
         //actionresult allows for returning multiple types so we can return NotFound result
-        public ActionResult<Item> GetItem(Guid id)
+        public ActionResult<ItemDTO> GetItem(Guid id)
         {
-            logger.LogInformation("Received request for item with ID {Id}", id);
             var item = repository.GetItem(id);
-            logger.LogInformation("Retrieved item with ID {Id}: {@Item}", id, item);
             if (item is null)
             {
                 return NotFound();
             }
-            return item;
+            return item.AsDTO();
         }
 
     }

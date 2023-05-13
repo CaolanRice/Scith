@@ -8,7 +8,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//only create one over the lifetime of the service
+//only create one instance of repository over the lifetime of the service/application
 builder.Services.AddSingleton<InterfaceItemsRepository, ItemsRepository>();
 
 var app = builder.Build();
