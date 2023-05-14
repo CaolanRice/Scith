@@ -38,6 +38,21 @@ namespace Scith.Controllers
             return item.AsDTO();
         }
 
+        [HttpPost]
+        public ActionResult<ItemDTO> CreateItem(CreateItemDTO itemDTO)
+        {
+            Item item = new()
+            {
+                Id = Guid.NewGuid(),
+                Name = itemDTO.Name,
+                Price = itemDTO.Price,
+                CreatedDate = DateTimeOffset.Now
+            };
+            repository.CreateItem(item);
+            //action result, nameof specifies route values for GET request, id = route param, item.Id = created items id. convert to DTO
+            return CreatedAtAction(nameof(GetItem), new { id = item.Id }, item.AsDTO());
+        }
+
     }
 
 
