@@ -75,6 +75,19 @@ namespace Scith.Controllers
             return NoContent();
         }
 
+        [HttpDelete("{id}")]
+        public ActionResult DeleteItem(Guid id)
+        {
+            var storedItem = repository.GetItem(id);
+            if (storedItem == null)
+            {
+                return NotFound();
+            }
+            repository.DeleteItem(id);
+            return NoContent();
+
+        }
+
     }
 
 
