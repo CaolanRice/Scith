@@ -50,7 +50,29 @@ namespace Scith.Controllers
             };
             repository.CreateItem(item);
             //action result, nameof specifies route values for GET request, id = route param, item.Id = created items id. convert to DTO
+            //returns 201 status code + location header that specifies where newly created item can be found
             return CreatedAtAction(nameof(GetItem), new { id = item.Id }, item.AsDTO());
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult UpdateItem(Guid id, UpdateItemDTO itemDTO)
+        {
+            var storedItem = repository.GetItem(id);
+            if (storedItem == null)
+            {
+                return NotFound();
+            }
+
+            //create copy of storedItem WITH following properties modified for the new values
+            Item updatedItem = storedItem with
+            {
+                Name = itemDTO.Name,
+                Price = itemDTO.Price
+            };
+
+            repository.UpdateItem(updatedItem);
+            //convention to return no content when with PUT methods
+            return NoContent();
         }
 
     }
