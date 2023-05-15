@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nL34D614apKCbCljv7w7TWBp2PJZRDfa+SnKdGipLLRkqcXCejPNaT/BQCJWLjJoi6HPMjJuZXTzgqwU1zGcVw==",
+  "dgSpecHash": "Nex4gcVJ/vayLCUvgK6kSwlQDR6wjQHngjERPAinNWb+gfaSst8NXKT7UC7PW+1aoF8mqaHycDoZN0ZMgtFcQA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Caolan\\Desktop\\Projects\\C#\\Scith\\Scith.csproj",
+  "projectFilePath": "C:\\Users\\Caolan\\Desktop\\Projects\\Backup\\Scith\\Scith.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Caolan\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\Caolan\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Caolan\\Desktop\\Projects\\C#\\Scith\\Scith.csproj": {}
+    "C:\\Users\\Caolan\\Desktop\\Projects\\Backup\\Scith\\Scith.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Caolan\\Desktop\\Projects\\C#\\Scith\\Scith.csproj": {
+    "C:\\Users\\Caolan\\Desktop\\Projects\\Backup\\Scith\\Scith.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Caolan\\Desktop\\Projects\\C#\\Scith\\Scith.csproj",
+        "projectUniqueName": "C:\\Users\\Caolan\\Desktop\\Projects\\Backup\\Scith\\Scith.csproj",
         "projectName": "Scith",
-        "projectPath": "C:\\Users\\Caolan\\Desktop\\Projects\\C#\\Scith\\Scith.csproj",
+        "projectPath": "C:\\Users\\Caolan\\Desktop\\Projects\\Backup\\Scith\\Scith.csproj",
         "packagesPath": "C:\\Users\\Caolan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Caolan\\Desktop\\Projects\\C#\\Scith\\obj\\",
+        "outputPath": "C:\\Users\\Caolan\\Desktop\\Projects\\Backup\\Scith\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Caolan\\AppData\\Roaming\\NuGet\\NuGet.Config",
