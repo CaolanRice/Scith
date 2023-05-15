@@ -64,3 +64,17 @@ C:\Users\Caolan\Desktop\Projects\C#\Scith\obj\Debug\net7.0\refint\Scith.dll
 C:\Users\Caolan\Desktop\Projects\C#\Scith\obj\Debug\net7.0\Scith.pdb
 C:\Users\Caolan\Desktop\Projects\C#\Scith\obj\Debug\net7.0\Scith.genruntimeconfig.cache
 C:\Users\Caolan\Desktop\Projects\C#\Scith\obj\Debug\net7.0\ref\Scith.dll
+C:\Users\Caolan\Desktop\Projects\C#\Scith\bin\Debug\net7.0\AWSSDK.Core.dll
+C:\Users\Caolan\Desktop\Projects\C#\Scith\bin\Debug\net7.0\AWSSDK.SecurityToken.dll
+C:\Users\Caolan\Desktop\Projects\C#\Scith\bin\Debug\net7.0\DnsClient.dll
+C:\Users\Caolan\Desktop\Projects\C#\Scith\bin\Debug\net7.0\dotenv.net.dll
+C:\Users\Caolan\Desktop\Projects\C#\Scith\bin\Debug\net7.0\MongoDB.Bson.dll
+C:\Users\Caolan\Desktop\Projects\C#\Scith\bin\Debug\net7.0\MongoDB.Driver.dll
+C:\Users\Caolan\Desktop\Projects\C#\Scith\bin\Debug\net7.0\MongoDB.Driver.Core.dll
+C:\Users\Caolan\Desktop\Projects\C#\Scith\bin\Debug\net7.0\MongoDB.Libmongocrypt.dll
+C:\Users\Caolan\Desktop\Projects\C#\Scith\bin\Debug\net7.0\SharpCompress.dll
+C:\Users\Caolan\Desktop\Projects\C#\Scith\bin\Debug\net7.0\Snappier.dll
+C:\Users\Caolan\Desktop\Projects\C#\Scith\bin\Debug\net7.0\ZstdSharp.dll
+C:\Users\Caolan\Desktop\Projects\C#\Scith\bin\Debug\net7.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\Caolan\Desktop\Projects\C#\Scith\bin\Debug\net7.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\Caolan\Desktop\Projects\C#\Scith\bin\Debug\net7.0\runtimes\win\native\mongocrypt.dll
