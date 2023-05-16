@@ -19,18 +19,20 @@ namespace Scith.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<ItemDTO> GetItems()
+        public async Task<IEnumerable<ItemDTO>> GetItemsAsync()
         {
             //convert each item in repository to a DTO
-            var items = repository.GetItems().Select(item => item.AsDTO());
+            //first call GetItemsAsync and THEN select
+            var items = (await repository.GetItemsAsync())
+                            .Select(item => item.AsDTO());
             return items;
         }
 
         [HttpGet("{id}")]
         //actionresult allows for returning multiple types so we can return NotFound result
-        public ActionResult<ItemDTO> GetItem(Guid id)
+        public async Task<ActionResult<ItemDTO>> GetItemAsync(Guid id)
         {
-            var item = repository.GetItem(id);
+            var item = await repository.GetItemAsync(id);
             if (item is null)
             {
                 return NotFound();
@@ -39,7 +41,7 @@ namespace Scith.Controllers
         }
 
         [HttpPost]
-        public ActionResult<ItemDTO> CreateItem(CreateItemDTO itemDTO)
+        public async Task<ActionResult<ItemDTO>> CreateItemAsync(CreateItemDTO itemDTO)
         {
             Item item = new()
             {
@@ -48,16 +50,16 @@ namespace Scith.Controllers
                 Price = itemDTO.Price,
                 CreatedDate = DateTimeOffset.Now
             };
-            repository.CreateItem(item);
+            await repository.CreateItemAsync(item);
             //action result, nameof specifies route values for GET request, id = route param, item.Id = created items id. convert to DTO
             //returns 201 status code + location header that specifies where newly created item can be found
-            return CreatedAtAction(nameof(GetItem), new { id = item.Id }, item.AsDTO());
+            return CreatedAtAction(nameof(GetItemAsync), new { id = item.Id }, item.AsDTO());
         }
 
         [HttpPut("{id}")]
-        public ActionResult UpdateItem(Guid id, UpdateItemDTO itemDTO)
+        public async Task<ActionResult> UpdateItemAsync(Guid id, UpdateItemDTO itemDTO)
         {
-            var storedItem = repository.GetItem(id);
+            var storedItem = await repository.GetItemAsync(id);
             if (storedItem == null)
             {
                 return NotFound();
@@ -70,22 +72,21 @@ namespace Scith.Controllers
                 Price = itemDTO.Price
             };
 
-            repository.UpdateItem(updatedItem);
+            await repository.UpdateItemAsync(updatedItem);
             //convention to return no content when with PUT methods
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteItem(Guid id)
+        public async Task<ActionResult> DeleteItemAsync(Guid id)
         {
-            var storedItem = repository.GetItem(id);
+            var storedItem = repository.GetItemAsync(id);
             if (storedItem == null)
             {
                 return NotFound();
             }
-            repository.DeleteItem(id);
+            await repository.DeleteItemAsync(id);
             return NoContent();
-
         }
 
     }

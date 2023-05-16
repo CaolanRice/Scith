@@ -24,36 +24,38 @@ namespace Scith.Repositories
 
         }
 
-        public void CreateItem(Item item)
+        public async Task CreateItemAsync(Item item)
         {
-            itemCollection.InsertOne(item);
+            //implement async version of the methods that IMongoCollection offers
+            await itemCollection.InsertOneAsync(item);
         }
 
-        public void DeleteItem(Guid id)
+        public async Task DeleteItemAsync(Guid id)
         {
             //search through item collection to filter out item that matches id of the item passed as parameter
             var filter = filterBuilder.Eq(item => item.Id, id);
-            itemCollection.DeleteOne(filter);
+            await itemCollection.DeleteOneAsync(filter);
         }
 
-        public Item GetItem(Guid id)
+        public async Task<Item> GetItemAsync(Guid id)
         {
             var filter = filterBuilder.Eq(item => item.Id, id);
             //return filtered item
-            return itemCollection.Find(filter).SingleOrDefault();
+            return await itemCollection.Find(filter).SingleOrDefaultAsync();
         }
 
-        public IEnumerable<Item> GetItems()
+        //retrieve all documents from collection and return as async sequence of item objects
+        public async Task<IEnumerable<Item>> GetItemsAsync()
         {
             //find all documents and return as list
-            return itemCollection.Find(new BsonDocument()).ToList();
+            return await itemCollection.Find(new BsonDocument()).ToListAsync();
         }
 
-        public void UpdateItem(Item item)
+        public async Task UpdateItemAsync(Item item)
         {
             var filter = filterBuilder.Eq(storedItem => storedItem.Id, item.Id);
             //replace 
-            itemCollection.ReplaceOne(filter, item);
+            await itemCollection.ReplaceOneAsync(filter, item);
         }
     }
 }
