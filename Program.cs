@@ -22,18 +22,28 @@ builder.Services.AddSingleton<InterfaceItemsRepository, MongoDbRepository>();
 //setup IMongoClient for dependency injection
 builder.Services.AddSingleton<IMongoClient>(serviceProvider =>
 {
-    //serialize guid and datetime to improve readability
+    // Serialize guid and datetime to improve readability
     BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
     BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
 
-    //retrive IConfiguration service instance to read configuration values from appsettings, .env etc
+    // Retrieve IConfiguration service instance to read configuration values from appsettings, .env, etc.
     var configuration = serviceProvider.GetRequiredService<IConfiguration>();
-    //retrieve configuration instance of our MongoDbConfig class
-    var mongoSettings = configuration.GetSection(nameof(MongoDbConfig)).Get<MongoDbConfig>();
-    //create new MongoClient instance using connection string from mongoSettings. 
-    //All requests of IMongoClient will use the same instance of this MongoClient instead of creating new ones
+
+    // Retrieve the MongoDbConfig section directly without using connection string name
+    var mongoSettings = new MongoDbConfig();
+    configuration.GetSection("MongoDbConfig").Bind(mongoSettings);
+
+    // Create new MongoClient instance using the connection string from mongoSettings.
+    // All requests of IMongoClient will use the same instance of this MongoClient instead of creating new ones.
     return new MongoClient(mongoSettings.ConnectionString);
 });
+
+// Health check for REST APIs
+var mongoDbConfig = builder.Configuration.GetSection(nameof(MongoDbConfig)).Get<MongoDbConfig>();
+builder.Services.AddHealthChecks()
+    .AddMongoDb(mongoDbConfig.ConnectionString);
+
+
 
 
 
@@ -51,6 +61,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHealthChecks("/healthcheck");
 
 app.Run();
 
