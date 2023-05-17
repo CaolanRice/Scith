@@ -5,8 +5,12 @@ using Scith.Configurations;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Bson;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using System.Text.Json;
+using System.Net.Mime;
 
 var builder = WebApplication.CreateBuilder(args);
+DotEnv.Load();
 
 // Add services to the container.
 //prevents .NET from removing async suffix from methods during runtime
@@ -41,10 +45,10 @@ builder.Services.AddSingleton<IMongoClient>(serviceProvider =>
 // Health check for REST APIs
 var mongoDbConfig = builder.Configuration.GetSection(nameof(MongoDbConfig)).Get<MongoDbConfig>();
 builder.Services.AddHealthChecks()
-    .AddMongoDb(mongoDbConfig.ConnectionString);
-
-
-
+    .AddMongoDb(mongoDbConfig.ConnectionString,
+    name: "mongodb",
+    timeout: TimeSpan.FromSeconds(3),
+    tags: new[] { "ready" });
 
 
 var app = builder.Build();
@@ -58,12 +62,41 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+app.UseRouting();
 
-app.MapControllers();
+app.UseAuthorization();
 
 app.MapHealthChecks("/healthcheck");
 
+app.MapHealthChecks("/healthcheck/ready", new HealthCheckOptions
+{
+    //filter the set of health checks executed so that only those tagged with ready are included
+    Predicate = (check) => check.Tags.Contains("ready"),
+    //format the response from the health checks
+    ResponseWriter = async (context, report) =>
+    {
+        var result = JsonSerializer.Serialize(
+            new
+            {
+                status = report.Status.ToString(),
+                checks = report.Entries.Select(entry => new
+                {
+                    name = entry.Key,
+                    status = entry.Value.Status.ToString(),
+                    execption = entry.Value.Exception != null ? entry.Value.Exception.Message : "none",
+                    duration = entry.Value.Duration.ToString()
+
+                })
+            }
+        );
+        context.Response.ContentType = MediaTypeNames.Application.Json;
+        await context.Response.WriteAsync(result);
+    }
+});
+
+
+app.MapControllers();
+
 app.Run();
 
-DotEnv.Load();
+
