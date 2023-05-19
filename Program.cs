@@ -10,7 +10,6 @@ using System.Text.Json;
 using System.Net.Mime;
 
 var builder = WebApplication.CreateBuilder(args);
-DotEnv.Load();
 
 // Add services to the container.
 //prevents .NET from removing async suffix from methods during runtime
@@ -58,9 +57,9 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseHttpsRedirection();
 }
 
-app.UseHttpsRedirection();
 
 app.UseRouting();
 
@@ -99,4 +98,4 @@ app.MapControllers();
 
 app.Run();
 
-
+DotEnv.Load();
