@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scith-deployment
+spec:
+  selector:
+    matchLabels:
+    #all pods that have an app label will be managed by this deployment
+      app: scith
+  template:
+    metadata:
+      labels:
+      #labels for the pods
+        app: scith
+    spec:
+    #declare list of containers that are included in this deployment
+      containers:
+      - name: scith
+        image: caolanrice/scith:v1
+        #declare what resources to assign
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        #port that container is exposing
+        - containerPort: 80
+        env:
+          - name: MongoDbConfig__Host
+            value: mongodb-service
+            #environment variable created through kubectl secret
+          - name: MongoDbConfig__Password
+            valueFrom:
+              secretKeyRef:
+                name: scith-secrets
+                key: mongodb-password
+        #healthprops to allow kubernetes to use our healthchecks on running containers
+        #periodically checks if container is alive, restarts container if it's not
+        livenessProbe:
+          httpGet:
+            path: /healthcheck
+            port: 80
+        #periodically checks if the container is ready to be used/serve requests
+        readinessProbe:
+          httpGet:
+            path: /healthcheck/ready
+            port: 80
+
+---
+#service config, expose application running on pods as a network service
+apiVersion: v1
+kind: Service
+metadata:
+  name: scith-service
+spec:
+  type: LoadBalancer
+  selector:
+  #allow service to target any pods with the app label with value scith
+    app: scith
+  ports:
+  #reach into container from outside
+  - port: 80
+    #target same as specified in deployment config
+    targetPort: 80

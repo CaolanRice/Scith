@@ -38,19 +38,6 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "type": "go",
-            "label": "go: build package",
-            "command": "build",
-            "args": [
-                "${fileDirname}"
-            ],
-            "problemMatcher": [
-                "$go"
-            ],
-            "group": "build",
-            "detail": "cd c:\\Users\\Caolan\\Desktop\\Projects\\Backup\\Scith; go build ${fileDirname}"
-        },
-        {
             "type": "docker-build",
             "label": "docker-build: debug",
             "dependsOn": [
