@@ -1,7 +1,7 @@
-using Scith.Repositories;
+using Scith.API.Repositories;
 using dotenv.net;
 using MongoDB.Driver;
-using Scith.Configurations;
+using Scith.API.Configurations;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Bson;

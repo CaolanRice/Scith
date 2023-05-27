@@ -1,10 +1,10 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
-using Scith.Entities;
+using Scith.API.Entities;
 
 
 
-namespace Scith.Repositories
+namespace Scith.API.Repositories
 {
     public class MongoDbRepository : InterfaceItemsRepository
     {

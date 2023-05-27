@@ -1,4 +1,4 @@
-namespace Scith.Entities{
+namespace Scith.API.Entities{
     public record Item{
 
         //only allow setting values during init

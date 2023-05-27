@@ -1,4 +1,4 @@
-namespace Scith.DTOs
+namespace Scith.API.DTOs
 
 //This DTO is used to encapsulate data between the client and server, allows control over which data is exposed by APIs 
 {

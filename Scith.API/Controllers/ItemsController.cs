@@ -1,9 +1,9 @@
 
 using Microsoft.AspNetCore.Mvc;
-using Scith.DTOs;
-using Scith.Entities;
+using Scith.API.DTOs;
+using Scith.API.Entities;
 
-namespace Scith.Controllers
+namespace Scith.API.Controllers
 
 {
     [ApiController]

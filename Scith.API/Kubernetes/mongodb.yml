@@ -1,0 +1,63 @@
+#statefulset manages stateful applications, providing consistency in identities of pods
+#handles ordering of pods, mongoDb1, mongoDb2 pods etc. Retain state if any pods die
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongodb-statefulset
+spec:
+  selector:
+    matchLabels:
+      app: mongodb
+  #give identity to statefulset and pods that are managed by it
+  serviceName: "mongodb-service"
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo
+        ports:
+        #this port must be used to connect to mongodb inside a container
+        - containerPort: 27017
+          name: web
+        volumeMounts:
+        - name: data
+        #where mongodb stores its data in the container
+          mountPath: /data/db
+    env:
+    - name: MONGO_INITDB_ROOT_USERNAME
+      value: "mongoadmin"
+    - name: MONGO_INITDB_ROOT_PASSWORD
+      valueFrom:
+        secretKeyRef:
+            name: scith-secrets
+            key: mongodb-password
+  #persistent volume
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+    #only one node can read/write at a time
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-service
+spec:
+  #headless service
+  clusterIP: None
+  #find pods that are tagged with mongodb value
+  selector:
+    app: mongodb
+  ports:
+  - port: 27017
+    targetPort: 27017

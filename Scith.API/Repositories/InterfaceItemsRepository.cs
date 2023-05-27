@@ -1,5 +1,5 @@
 
-using Scith.Entities;
+using Scith.API.Entities;
 //this interface defines the contract for any classes that implement it
 
 public interface InterfaceItemsRepository

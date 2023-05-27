@@ -1,4 +1,4 @@
-namespace Scith.Configurations
+namespace Scith.API.Configurations
 {
     public class MongoDbConfig
     {

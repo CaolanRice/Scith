@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Scith.csproj",
+                "${workspaceFolder}/Scith.API/Scith.API.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/Scith.csproj",
+                "${workspaceFolder}/Scith.API/Scith.API.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/Scith.csproj"
+                "${workspaceFolder}/Scith.API/Scith.API.csproj"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -46,12 +46,12 @@
             "dockerBuild": {
                 "tag": "scith:dev",
                 "target": "base",
-                "dockerfile": "${workspaceFolder}/Dockerfile",
+                "dockerfile": "${workspaceFolder}/Scith.API/Dockerfile",
                 "context": "${workspaceFolder}",
                 "pull": true
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/Scith.csproj"
+                "appProject": "${workspaceFolder}/Scith.API/Scith.API.csproj"
             }
         },
         {
@@ -62,13 +62,13 @@
             ],
             "dockerBuild": {
                 "tag": "scith:latest",
-                "dockerfile": "${workspaceFolder}/Dockerfile",
+                "dockerfile": "${workspaceFolder}/Scith.API/Dockerfile",
                 "context": "${workspaceFolder}",
                 "platform": "linux/amd64",
                 "pull": true
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/Scith.csproj"
+                "appProject": "${workspaceFolder}/Scith.API/Scith.API.csproj"
             }
         },
         {
@@ -79,7 +79,7 @@
             ],
             "dockerRun": {},
             "netCore": {
-                "appProject": "${workspaceFolder}/Scith.csproj",
+                "appProject": "${workspaceFolder}/Scith.API/Scith.API.csproj",
                 "enableDebugging": true,
                 "configureSsl": false
             }
@@ -92,7 +92,7 @@
             ],
             "dockerRun": {},
             "netCore": {
-                "appProject": "${workspaceFolder}/Scith.csproj"
+                "appProject": "${workspaceFolder}/Scith.API/Scith.API.csproj"
             }
         }
     ]

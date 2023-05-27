@@ -1,7 +1,7 @@
-using Scith.DTOs;
-using Scith.Entities;
+using Scith.API.DTOs;
+using Scith.API.Entities;
 
-namespace Scith
+namespace Scith.API
 {
     //this class defines the extensions for the Item class. This allows Item to convert itself into a DTO object without modifying it's own implememtation
     public static class Extensions

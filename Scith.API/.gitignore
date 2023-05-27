@@ -3,4 +3,4 @@ appsettings.Development.json
 bin/
 obj/
 .env
-Scith.csproj
+Scith.API.csproj
