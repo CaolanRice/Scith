@@ -12,10 +12,12 @@ namespace Scith.API.Controllers
     public class ItemsController : ControllerBase
     {
         private readonly InterfaceItemsRepository repository;
+        private readonly ILogger<ItemsController> logger;
 
-        public ItemsController(InterfaceItemsRepository repository)
+        public ItemsController(InterfaceItemsRepository repository, ILogger<ItemsController> logger)
         {
             this.repository = repository;
+            this.logger = logger;
         }
 
         [HttpGet]

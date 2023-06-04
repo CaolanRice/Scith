@@ -1,0 +1,6 @@
+<!-- This file is used compile any files that end in .proj, to allow for build of unit tests -->
+<Project Sdk="Microsoft.Build.Traversal/3.0.3">
+    <ItemGroup>    
+        <ProjectReference Include="**\*.*proj"/>
+    </ItemGroup>
+</Project>

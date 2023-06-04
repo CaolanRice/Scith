@@ -1,0 +1,6 @@
+Scith.API/appsettings.json
+Scith.API/appsettings.Development.json
+**/bin/
+**/obj/
+.env
+Scith.API.csproj
