@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Caolan Rice\\Desktop\\Projects\\C#\\Scith\\Scith.UnitTests\\Scith.UnitTests.csproj": {}
+    "C:\\Users\\Caolan\\Desktop\\Projects\\C#\\Scith\\Scith.UnitTests\\Scith.UnitTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Caolan Rice\\Desktop\\Projects\\C#\\Scith\\Scith.API\\Scith.API.csproj": {
+    "C:\\Users\\Caolan\\Desktop\\Projects\\C#\\Scith\\Scith.API\\Scith.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Caolan Rice\\Desktop\\Projects\\C#\\Scith\\Scith.API\\Scith.API.csproj",
+        "projectUniqueName": "C:\\Users\\Caolan\\Desktop\\Projects\\C#\\Scith\\Scith.API\\Scith.API.csproj",
         "projectName": "Scith.API",
-        "projectPath": "C:\\Users\\Caolan Rice\\Desktop\\Projects\\C#\\Scith\\Scith.API\\Scith.API.csproj",
-        "packagesPath": "C:\\Users\\Caolan Rice\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Caolan Rice\\Desktop\\Projects\\C#\\Scith\\Scith.API\\obj\\",
+        "projectPath": "C:\\Users\\Caolan\\Desktop\\Projects\\C#\\Scith\\Scith.API\\Scith.API.csproj",
+        "packagesPath": "C:\\Users\\Caolan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Caolan\\Desktop\\Projects\\C#\\Scith\\Scith.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Caolan Rice\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Caolan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -84,17 +84,17 @@
         }
       }
     },
-    "C:\\Users\\Caolan Rice\\Desktop\\Projects\\C#\\Scith\\Scith.UnitTests\\Scith.UnitTests.csproj": {
+    "C:\\Users\\Caolan\\Desktop\\Projects\\C#\\Scith\\Scith.UnitTests\\Scith.UnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Caolan Rice\\Desktop\\Projects\\C#\\Scith\\Scith.UnitTests\\Scith.UnitTests.csproj",
+        "projectUniqueName": "C:\\Users\\Caolan\\Desktop\\Projects\\C#\\Scith\\Scith.UnitTests\\Scith.UnitTests.csproj",
         "projectName": "Scith.UnitTests",
-        "projectPath": "C:\\Users\\Caolan Rice\\Desktop\\Projects\\C#\\Scith\\Scith.UnitTests\\Scith.UnitTests.csproj",
-        "packagesPath": "C:\\Users\\Caolan Rice\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Caolan Rice\\Desktop\\Projects\\C#\\Scith\\Scith.UnitTests\\obj\\",
+        "projectPath": "C:\\Users\\Caolan\\Desktop\\Projects\\C#\\Scith\\Scith.UnitTests\\Scith.UnitTests.csproj",
+        "packagesPath": "C:\\Users\\Caolan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Caolan\\Desktop\\Projects\\C#\\Scith\\Scith.UnitTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Caolan Rice\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Caolan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -108,8 +108,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Caolan Rice\\Desktop\\Projects\\C#\\Scith\\Scith.API\\Scith.API.csproj": {
-                "projectPath": "C:\\Users\\Caolan Rice\\Desktop\\Projects\\C#\\Scith\\Scith.API\\Scith.API.csproj"
+              "C:\\Users\\Caolan\\Desktop\\Projects\\C#\\Scith\\Scith.API\\Scith.API.csproj": {
+                "projectPath": "C:\\Users\\Caolan\\Desktop\\Projects\\C#\\Scith\\Scith.API\\Scith.API.csproj"
               }
             }
           }
